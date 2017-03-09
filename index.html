@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>课堂第一练习</title>
+    <style>
+        .box{
+            background: #dec;
+        }
+        .box1{
+            background: red;
+        }
+        .box2{
+            background: green;
+        }
+    </style>
+    <script src="js/angular.js"></script>
+</head>
+<body ng-app="myApp" ng-init="first='syf'" ng-controller="myCtrl">
+    <input type="text" ng-model="txt"/>
+    <!--这是一种方式-->
+    <!--<div ng-bind="txt"></div>-->
+    <!--这是第二种方式，第二种方式用的多-->
+    <div>
+        {{txt}}
+    </div>
+    <p>
+        first为：<span ng-bind="first"></span>
+        <span>{{5+5}}</span>
+    </p>
+    <br/>
+    <input type="text" ng-model="firstName"/>
+    <input type="text" ng-model="lastName"/>
+    <div>
+        {{firstName+" "+lastName}}
+    </div>
+    <hr/>
+    <div ng-class="'box'">
+        ng-class用法练习:以字符串形式
+    </div>
+    <br/>
+    <div ng-class="{box:true}">
+        ng-class用法练习:以对象形式
+    </div>
+    <br/>
+    <div ng-class="['box','box1','box2'][2]">
+        ng-class用法练习:以数组形式
+    </div>
+    <br/>
+    <input type="text" ng-model="num"/>
+    <div ng-class="['box','box1','box2'][num]">
+        {{num}}
+    </div>
+    <br/>
+    <div ng-init="names=['kk','ff','hh']">
+        <p>使用 ng-repeat 来循环数组</p>
+        <ul>
+            <li ng-repeat="x in names">
+                {{ x }}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        //AngularJS模块定义应用
+        var app = angular.module("myApp",{});
+        //AngularJS控制器控制应用
+        app.controller("myCtrl",function($scope){
+            $scope.firstName="yafei";
+            $scope.lastName="shi";
+            $scope.num=1
+        })
+    </script>
+</body>
+</html>
